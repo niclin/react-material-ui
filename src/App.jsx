@@ -11,9 +11,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import AppBar from 'material-ui/AppBar';
 
-render(
+const App = () => (
     <MuiThemeProvider muiTheme={getMuiTheme()}>
-      <AppBar title="MyApp" />
-    </MuiThemeProvider>,
+      <AppBar title="App" />
+    </MuiThemeProvider>
+);
+
+render(
+    <App />,
     document.getElementById('content')
 );
