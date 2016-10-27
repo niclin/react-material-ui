@@ -11,13 +11,14 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import darkbaseTheme from 'material-ui/styles/baseThemes/darkbaseTheme';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import { MyAppBar } from './Components/MyAppBar';
+import { MyGridList } from './Components/MyGridList';
 
 const muiTheme = getMuiTheme(darkbaseTheme);
 
 const App = () => (
-    <MuiThemeProvider muiTheme={muiTheme}>
-      <MyAppBar title="App" />
-    </MuiThemeProvider>
+
+      <MyGridList/>
+
 );
 
 render(
