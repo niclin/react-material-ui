@@ -44,7 +44,7 @@ export class MyGridList extends Component {
           <GridTile
             key={tile.id}
             title={tile.title}
-            subtitle={<span>by<b>{tile.user.login}</b></span>}
+            subtitle={<span>by <b>{tile.user.login}</b></span>}
             actionIcon={<IconButton> <StarBorder color="white" /> </IconButton>}
           >
           <img src={'https://placeimg.com/320/200/tech?' + tile.id} />
