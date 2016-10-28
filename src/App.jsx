@@ -16,9 +16,12 @@ import { MyGridList } from './Components/MyGridList';
 const muiTheme = getMuiTheme(darkbaseTheme);
 
 const App = () => (
-
-      <MyGridList/>
-
+  <MuiThemeProvider muiTheme={muiTheme}>
+        <MyGridList
+          source="https://api.github.com/repos/niclin/blog/issues"
+          cellHeight={200}
+          />
+  </MuiThemeProvider>
 );
 
 render(
