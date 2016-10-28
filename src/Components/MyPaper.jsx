@@ -27,7 +27,11 @@ import { render } from 'react-dom';
       };
  }
       componentDidMount() {
-
+        $(window).bind('postUpdate', function(event, title, body) {
+            this.setState({
+              body: body
+            });
+        }.bind(this));
       }
 
       render() {
@@ -36,7 +40,6 @@ import { render } from 'react-dom';
               zDepth={1}
             >
             {this.state.body}
-            Hello  Paper
             </Paper>
           );
       }

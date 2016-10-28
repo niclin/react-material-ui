@@ -45343,6 +45343,8 @@ var MyGridList = exports.MyGridList = function (_Component) {
     _this.state = {
       issues: []
     };
+
+    _this._handleClick = _this._handleClick.bind(_this);
     return _this;
   }
 
@@ -45356,12 +45358,21 @@ var MyGridList = exports.MyGridList = function (_Component) {
       }.bind(this));
     }
   }, {
+    key: '_handleClick',
+    value: function _handleClick(tile) {
+      this.props.handleClick(tile.title, tile.body);
+    }
+  }, {
     key: 'render',
     value: function render() {
+      var _this2 = this;
+
       return _react2.default.createElement(_GridList.GridList, null, this.state.issues.map(function (tile) {
+        var boundClick = _this2._handleClick.bind(_this2, tile);
         return _react2.default.createElement(_GridList.GridTile, {
           key: tile.id,
           title: tile.title,
+          onClick: boundClick,
           subtitle: _react2.default.createElement("span", null, "by ", _react2.default.createElement("b", null, tile.user.login)),
           actionIcon: _react2.default.createElement(_IconButton2.default, null, " ", _react2.default.createElement(_starBorder2.default, { color: "white" }), " ")
         }, _react2.default.createElement("img", { src: 'https://placeimg.com/320/200/tech?' + tile.id }));
@@ -45430,13 +45441,19 @@ var MyPaper = exports.MyPaper = function (_Component) {
 
   _createClass(MyPaper, [{
     key: 'componentDidMount',
-    value: function componentDidMount() {}
+    value: function componentDidMount() {
+      (0, _jquery2.default)(window).bind('postUpdate', function (event, title, body) {
+        this.setState({
+          body: body
+        });
+      }.bind(this));
+    }
   }, {
     key: 'render',
     value: function render() {
       return _react2.default.createElement(_Paper2.default, {
         zDepth: 1
-      }, this.state.body, "Hello  Paper");
+      }, this.state.body);
     }
   }]);
 
@@ -45467,9 +45484,11 @@ var _MyGridList = require('./Components/MyGridList');
 
 var _MyPaper = require('./Components/MyPaper');
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var _jquery = require('jquery');
 
-var muiTheme = (0, _getMuiTheme2.default)();
+var _jquery2 = _interopRequireDefault(_jquery);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /*
  * 引入 React Material UI 元件程式庫
@@ -45477,13 +45496,18 @@ var muiTheme = (0, _getMuiTheme2.default)();
 /*
  * 引入 React 程式庫
  */
+var muiTheme = (0, _getMuiTheme2.default)();
 
+var handleClick = function handleClick(title, body) {
+  (0, _jquery2.default)(window).trigger('postUpdate', [title, body]);
+};
 
 var App = function App() {
-    return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, null), _react2.default.createElement(_MyPaper.MyPaper, null), _react2.default.createElement(_MyGridList.MyGridList, {
-        source: "https://api.github.com/repos/niclin/blog/issues",
-        cellHeight: 200 })));
+  return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, null), _react2.default.createElement(_MyPaper.MyPaper, null), _react2.default.createElement(_MyGridList.MyGridList, {
+    handleClick: handleClick,
+    source: "https://api.github.com/repos/niclin/blog/issues",
+    cellHeight: 200 })));
 };
 
 (0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('content'));
-},{"./Components/MyAppBar":384,"./Components/MyGridList":385,"./Components/MyPaper":386,"material-ui/styles/MuiThemeProvider":189,"material-ui/styles/getMuiTheme":192,"react":370,"react-dom":217}]},{},[387])
+},{"./Components/MyAppBar":384,"./Components/MyGridList":385,"./Components/MyPaper":386,"jquery":56,"material-ui/styles/MuiThemeProvider":189,"material-ui/styles/getMuiTheme":192,"react":370,"react-dom":217}]},{},[387])

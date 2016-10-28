@@ -13,7 +13,13 @@ import { MyAppBar } from './Components/MyAppBar';
 import { MyGridList } from './Components/MyGridList';
 import { MyPaper } from './Components/MyPaper';
 
+import $ from 'jquery';
+
 const muiTheme = getMuiTheme();
+
+const handleClick =(title, body) => {
+  $(window).trigger('postUpdate', [title, body]);
+};
 
 const App = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
@@ -21,6 +27,7 @@ const App = () => (
         <MyAppBar />
         <MyPaper />
         <MyGridList
+          handleClick={handleClick}
           source="https://api.github.com/repos/niclin/blog/issues"
           cellHeight={200}
           />
