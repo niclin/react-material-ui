@@ -36,10 +36,10 @@ import { render } from 'react-dom';
 
       render() {
         return (
-            <Paper
+            <Paper id="test"
               zDepth={1}
             >
-            {this.state.body}
+            <div dangerouslySetInnerHTML={{__html: this.state.body}} />
             </Paper>
           );
       }

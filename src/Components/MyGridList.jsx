@@ -30,14 +30,13 @@ export class MyGridList extends Component {
   componentDidMount() {
     $.get(this.props.source, function (result)  {
       this.setState({
-        issues: result
+        issues: result['items']
       });
     }.bind(this));
-
   }
 
   _handleClick(tile) {
-      this.props.handleClick(tile.title, tile.body);
+      this.props.handleClick(tile.title, tile.description);
   }
 
 
@@ -53,7 +52,7 @@ export class MyGridList extends Component {
             key={tile.id}
             title={tile.title}
             onClick={boundClick}
-            subtitle={<span>by <b>{tile.user.login}</b></span>}
+            subtitle={<span>by <b>{tile.author}</b></span>}
             actionIcon={<IconButton> <StarBorder color="white" /> </IconButton>}
           >
           <img src={'https://placeimg.com/320/200/tech?' + tile.id} />

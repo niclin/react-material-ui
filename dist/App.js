@@ -45353,14 +45353,14 @@ var MyGridList = exports.MyGridList = function (_Component) {
     value: function componentDidMount() {
       _jquery2.default.get(this.props.source, function (result) {
         this.setState({
-          issues: result
+          issues: result['items']
         });
       }.bind(this));
     }
   }, {
     key: '_handleClick',
     value: function _handleClick(tile) {
-      this.props.handleClick(tile.title, tile.body);
+      this.props.handleClick(tile.title, tile.description);
     }
   }, {
     key: 'render',
@@ -45373,7 +45373,7 @@ var MyGridList = exports.MyGridList = function (_Component) {
           key: tile.id,
           title: tile.title,
           onClick: boundClick,
-          subtitle: _react2.default.createElement("span", null, "by ", _react2.default.createElement("b", null, tile.user.login)),
+          subtitle: _react2.default.createElement("span", null, "by ", _react2.default.createElement("b", null, tile.author)),
           actionIcon: _react2.default.createElement(_IconButton2.default, null, " ", _react2.default.createElement(_starBorder2.default, { color: "white" }), " ")
         }, _react2.default.createElement("img", { src: 'https://placeimg.com/320/200/tech?' + tile.id }));
       }));
@@ -45451,9 +45451,9 @@ var MyPaper = exports.MyPaper = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      return _react2.default.createElement(_Paper2.default, {
+      return _react2.default.createElement(_Paper2.default, { id: "test",
         zDepth: 1
-      }, this.state.body);
+      }, _react2.default.createElement("div", { dangerouslySetInnerHTML: { __html: this.state.body } }));
     }
   }]);
 
@@ -45503,9 +45503,9 @@ var handleClick = function handleClick(title, body) {
 };
 
 var App = function App() {
-  return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, null), _react2.default.createElement(_MyPaper.MyPaper, null), _react2.default.createElement(_MyGridList.MyGridList, {
+  return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, null), _react2.default.createElement("div", null, _react2.default.createElement(_MyPaper.MyPaper, null)), _react2.default.createElement(_MyGridList.MyGridList, {
     handleClick: handleClick,
-    source: "https://api.github.com/repos/niclin/blog/issues",
+    source: "http://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fblog.niclin.tw%2Fposts.rss",
     cellHeight: 200 })));
 };
 
