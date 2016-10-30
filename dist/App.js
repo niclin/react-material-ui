@@ -45280,7 +45280,7 @@ var MyAppBar = exports.MyAppBar = function MyAppBar() {
 
     }, _react2.default.createElement(_MenuItem2.default, { primaryText: "Help" })),
 
-    title: "App" });
+    title: "Nic blog on react.js" });
 };
 },{"material-ui/AppBar":155,"material-ui/IconButton":162,"material-ui/IconMenu":164,"material-ui/MenuItem":171,"material-ui/svg-icons/navigation/more-vert":201,"react":370,"react-dom":217,"react-tap-event-plugin":224}],385:[function(require,module,exports){
 'use strict';
@@ -45503,7 +45503,7 @@ var handleClick = function handleClick(title, body) {
 };
 
 var App = function App() {
-  return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, null), _react2.default.createElement("div", null, _react2.default.createElement(_MyPaper.MyPaper, null)), _react2.default.createElement(_MyGridList.MyGridList, {
+  return _react2.default.createElement(_MuiThemeProvider2.default, { muiTheme: muiTheme }, _react2.default.createElement("div", null, _react2.default.createElement(_MyAppBar.MyAppBar, null), _react2.default.createElement(_MyPaper.MyPaper, null), _react2.default.createElement(_MyGridList.MyGridList, {
     handleClick: handleClick,
     source: "http://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fblog.niclin.tw%2Fposts.rss",
     cellHeight: 200 })));

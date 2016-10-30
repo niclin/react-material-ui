@@ -26,6 +26,6 @@ export const MyAppBar = () => (
             <MenuItem primaryText="Help" />
           </IconMenu>
         }
-        title="App" />
+        title="Nic blog on react.js" />
 
 );

@@ -25,9 +25,7 @@ const App = () => (
   <MuiThemeProvider muiTheme={muiTheme}>
       <div>
         <MyAppBar />
-        <div>
         <MyPaper />
-        </div>
         <MyGridList
           handleClick={handleClick}
           source="http://api.rss2json.com/v1/api.json?rss_url=http%3A%2F%2Fblog.niclin.tw%2Fposts.rss"
